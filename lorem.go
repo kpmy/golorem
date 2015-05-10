@@ -6,14 +6,13 @@ package lorem
 
 import (
 	"math/rand"
-	"time"
 	"strings"
+	"time"
 )
-
-var src = rand.New(rand.NewSource(int64(time.Now().Nanosecond())))
 
 // Generate a natural word len.
 func genWordLen() int {
+	var src = rand.New(rand.NewSource(time.Now().UnixNano() + rand.Int63()))
 	f := src.Float32() * 100
 	// a table of word lengths and their frequencies.
 	switch {
@@ -48,6 +47,7 @@ func genWordLen() int {
 }
 
 func intRange(min, max int) int {
+	var src = rand.New(rand.NewSource(time.Now().UnixNano() + rand.Int63()))
 	if min == max {
 		return intRange(min, min+1)
 	}
@@ -59,6 +59,7 @@ func intRange(min, max int) int {
 }
 
 func word(wordLen int) string {
+	var src = rand.New(rand.NewSource(time.Now().UnixNano() + rand.Int63()))
 	if wordLen < 1 {
 		wordLen = 1
 	}
@@ -87,6 +88,7 @@ func Word(min, max int) string {
 
 // Generate a sentence with a specified range of words.
 func Sentence(min, max int) string {
+	var src = rand.New(rand.NewSource(time.Now().UnixNano() + rand.Int63()))
 	n := intRange(min, max)
 
 	// grab some words
